@@ -34,5 +34,5 @@ resource "azurerm_public_ip" "sulabs_src_terraform_jumpbox_public_ip" {
     location = var.location
     resource_group_name = var.resource_group_name
     allocation_method = "Static"
-    domain_name_label = "$(random_string.fqdn.result)-ssh"
+    domain_name_label = "${random_string.fqdn.result}-ssh"
 }
