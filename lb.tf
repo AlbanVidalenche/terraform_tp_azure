@@ -13,7 +13,7 @@ resource "azurerm_lb" "sulabs_src_terrafrom_app_lb" {
 
 # Création du pool d'addresse Backend
 
-resource "azurerm_lb_backend_address_pool" "sulabs_src_terrafrom_backendpool" {
+resource "azurerm_lb_backend_address_pool" "sulabs_src_terraform_backendpool" {
     loadbalancer_id = azurerm_lb.sulabs_src_terrafrom_app_lb.id
     name            = "sulabs_src_terrafrom_backend_addresspool"
 }
@@ -27,6 +27,6 @@ resource "azurerm_lb_rule" "sulabs_src_terrafrom_lb_nat_rule" {
     protocol = "TCP"
     frontend_port = var.application_port
     backend_port = var.application_port
-    backend_address_pool_id = azurerm_lb_backend_address_pool.sulabs_src_terrafrom_backendpool.id
+    backend_address_pool_id = azurerm_lb_backend_address_pool.sulabs_src_terraform_backendpool.id
     frontend_ip_configuration_name = "terrafrom_sulabs_src_lb_public_ip"
 }

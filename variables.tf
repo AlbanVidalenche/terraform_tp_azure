@@ -14,6 +14,21 @@ variable "application_port" {
     default = 80
 }
 
+# Databases Name
+
+variable "mariadb_server_name" {
+    description = "Database server name"
+    default = "terraform-src-sulabs-mariadb-server-av"
+}
+
+# Databases Username
+
+variable "mariadb_server_username" {
+    type = string
+    description = "Database admin server username"
+    default = "sciencesu"
+}
+
 
 variable "tags" {
     description = " Maps of tags"

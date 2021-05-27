@@ -75,3 +75,10 @@ resource "azurerm_virtual_machine" "sulabs_src_terraform" {
 
     tags = "${merge(var.tags, {ansible_group = "web"})}"    
 }
+
+resource "azurerm_network_interface_backend_address_pool_association" "sulabs_src_terraform_backend_pool_association" {
+  count                   = 2
+  network_interface_id    = "${element(azurerm_network_interface.sulabs_src_terraform.*.id,count.index)}"
+  ip_configuration_name   = "sulabs_src_backend_ip_configuration"
+  backend_address_pool_id = azurerm_lb_backend_address_pool.sulabs_src_terraform_backendpool.id
+}
